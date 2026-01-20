@@ -1,0 +1,22 @@
+<form #movieForm="ngForm"
+(ngSubmit)="onAdd()">
+    <div class="form-group">
+        <label  for="title" >Movie Title</label>
+            <input 
+            ngModel
+            name="title"
+            #title="ngModel"
+            type="text" class="form-control">
+
+            <label  for="backdrop_path" >Movie Image Url</label>
+            <input 
+            ngModel
+            name="backdrop_path"
+            #backdrop_path="ngModel"
+            type="text" class="form-control">
+
+            <button *ngIf="!isInEditMode" mat-raised-button color="primary" class="w-100 mt-3">Add Movie</button>
+            <button *ngIf="isInEditMode" (click)="onUpdate()" mat-raised-button color="warn" class="w-100 mt-3">Update Movie</button>
+            
+        </div>
+</form>

@@ -1,0 +1,15 @@
+<form #todoForm="ngForm"
+(ngSubmit)="onSubmit()">
+    <label for="title">Add Todo</label>
+    <input 
+    ngModel
+    required
+    #title="ngModel"
+    name="title"
+    type="text" class="form-control">
+
+    
+    <button  *ngIf="!isInEditMode" mat-raised-button color="primary" class="mt-3 btn-block">Add Todo</button>
+    <button *ngIf="isInEditMode" (click)="onUpdate()" type="button" mat-raised-button color="warn" class=" mt-3 btn-block">Update Todo</button>
+
+</form>

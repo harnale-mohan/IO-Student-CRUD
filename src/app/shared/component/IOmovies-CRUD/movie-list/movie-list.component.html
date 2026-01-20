@@ -1,0 +1,17 @@
+<div class="row">
+
+<div class="col-md-4 mb-4" *ngFor="let movie of movieArr">
+<mat-card class="example-card">
+  <img mat-card-image [src]="'https://image.tmdb.org/t/p/w500'+movie.backdrop_path || movie.poster_path" [alt]="movie.title">
+  <mat-card-content>
+    <p>
+    {{movie.title  || movie.original_title}}
+    </p>
+  </mat-card-content>
+  <mat-card-actions class="d-flex justify-content-between">
+    <button (click)="onEdit(movie)" mat-raised-button color="primary">Edit</button>
+    <button (click)="onRemove(movie.id)" mat-raised-button color="warn">REmove</button>
+  </mat-card-actions>
+</mat-card>
+</div>
+</div>

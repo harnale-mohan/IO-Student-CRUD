@@ -1,0 +1,29 @@
+<table class="table table-bordered">
+    <thead>
+        <tr class="text-center" >
+            <th>Sr.No</th>
+            <th>First Name</th>
+            <th>Last Name</th>
+            <th>Email</th>
+            <th>Contact</th>
+            <th>Edit</th>
+            <th>Remove</th>
+        </tr>
+    </thead>
+
+    <tbody>
+        <tr class="text-center" *ngFor="let std of stdArr; let i = index">
+            <td>{{i+1}}</td>
+            <td>{{std.fname}}</td>
+            <td>{{std.lname}}</td>
+            <td>{{std.email}}</td>
+            <td>{{std.contact}}</td>
+            <td>
+                <button (click)="onEdit(std)" mat-mini-fab color="primary"><mat-icon>edit</mat-icon></button>
+            </td>
+            <td>
+                <button (click)="onRemove(std.id)" mat-mini-fab color="warn"><mat-icon>delete</mat-icon></button>
+            </td>
+        </tr>
+    </tbody>
+</table>    

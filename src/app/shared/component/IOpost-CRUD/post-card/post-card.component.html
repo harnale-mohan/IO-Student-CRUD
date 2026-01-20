@@ -1,0 +1,17 @@
+<div class="row">
+<div class="col-md-4 mb-4" *ngFor="let post of postArr">
+<mat-card class="example-card">
+  <mat-card-title class="heading">{{ post.title}}</mat-card-title>
+  <mat-card-content class="content">
+    <p>{{post.body}}</p>
+  </mat-card-content>
+  
+  <mat-card-actions class="d-flex justify-content-between">
+    <button (click)="onEdit(post)" mat-raised-button color="primary">Edit</button>
+    <button (click)="onRemove(post.id)" mat-raised-button color="warn">Remove</button>
+  </mat-card-actions>
+  <mat-card-footer>
+  </mat-card-footer>
+</mat-card>
+</div>
+</div>

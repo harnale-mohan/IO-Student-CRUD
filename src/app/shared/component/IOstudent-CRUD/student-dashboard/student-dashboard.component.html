@@ -1,0 +1,22 @@
+<div class="container m-3">
+    <div class="row">
+        <div class="col-md-6">
+            <app-student-form
+            (emitNewStd)="onAdd($event)"
+            [editStd]="editStd"
+            (emitUpdatedStd)="onUpdate($event)">
+
+            </app-student-form>
+        </div>
+
+        <div class="col-md-6">
+            <app-student-table
+            [stdArr]="stdArr"
+            (emitRemoveStd)="onRemove($event)"
+            (emitEditStd)="onEdit($event)"
+            >
+
+            </app-student-table>
+        </div>
+    </div>
+</div>
