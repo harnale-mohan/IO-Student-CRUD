@@ -10,14 +10,14 @@ export class PostCardComponent implements OnInit {
   @Input() postArr !: Array<Ipost>
   @Output() emitRemovePost : EventEmitter<number> = new EventEmitter<number>()
   @Output() emitEditPost : EventEmitter<Ipost> = new EventEmitter<Ipost>()
-  
+   
 
   constructor() { }
 
   ngOnInit(): void {
   }
 
-  onRemove(id: number){
+  onRemove(id : number){
     this.emitRemovePost.emit(id)
   }
 

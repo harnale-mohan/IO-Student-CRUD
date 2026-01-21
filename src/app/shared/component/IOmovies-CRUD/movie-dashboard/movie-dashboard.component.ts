@@ -20,25 +20,26 @@ export class MovieDashboardComponent implements OnInit {
 
   movieArr : Array<Imovies> = movieArray
 
-  onMovieAdd(movie : Imovies){
+  onAdd(movie : Imovies){
     this.movieArr.push(movie)
-    this._snackbar.openSnackBar(`The new movie with ${movie.id} is Added Successfully.`)
+    this._snackbar.openSnackBar(`New movie with ${movie.id} is Created Successfully`)
   }
 
   onRemove(id : number){
-    let getIndex = this.movieArr.findIndex(m => m.id == id);
+    let getIndex = this.movieArr.findIndex(m => m.id == id)
     this.movieArr.splice(getIndex,1)
-    this._snackbar.openSnackBar(`Movie with ${id} is Removed Successfully.`)
+    this._snackbar.openSnackBar(`movie with ${id} is Removed Successfully`)
   }
 
   onEdit(movie : Imovies){
-    this.editMovie = movie;
+  this.editMovie = movie;
   }
 
   onUpdate(movie : Imovies){
-    let getIndex  = this.movieArr.findIndex(m => m.id == movie.id)
+    let getIndex = this.movieArr.findIndex(m => m.id == movie.id)
     this.movieArr[getIndex] = movie
-    this._snackbar.openSnackBar(`Movie with ${movie.id} is Updated Successfully.`)
+    this._snackbar.openSnackBar(`movie with ${movie.id} is Updated Successfully`)
   }
+
 
 }

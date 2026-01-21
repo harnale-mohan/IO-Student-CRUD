@@ -10,8 +10,6 @@ import { SnackBarService } from 'src/app/shared/services/snack-bar.service';
   styleUrls: ['./post-dashboard.component.scss']
 })
 export class PostDashboardComponent implements OnInit {
-
-
   editPost !: Ipost
 
   constructor(
@@ -23,25 +21,26 @@ export class PostDashboardComponent implements OnInit {
 
   postArr : Array<Ipost> = postData
 
-  onAddPost(post : Ipost){
-    this.postArr.push(post)
-    this._snackbar.openSnackBar(`New post with id ${post.id} is created successfully`)
+
+  onAdd(post : Ipost){
+    this.postArr.unshift(post)
+    this._snackbar.openSnackBar(`New Post with id ${post.id} is Added Successfully.`)
   }
 
   onRemove(id : number){
-    let getIndex = this.postArr.findIndex(s => s.id == id);
+    let getIndex = this.postArr.findIndex(p => p.id == id)
     this.postArr.splice(getIndex,1)
-    this._snackbar.openSnackBar(`post with id ${id} is Removed successfully`)
+    this._snackbar.openSnackBar(`Post with id ${id} is Removed Successfully.`)
   }
 
   onEdit(post : Ipost){
-    this.editPost = post;
+    this.editPost = post
   }
 
   onUpdate(post : Ipost){
-    let getIndex = this.postArr.findIndex(s => s.id == post.id)
+    let getIndex = this.postArr.findIndex(p => p.id === post.id)
     this.postArr[getIndex] = post
-    this._snackbar.openSnackBar(`post with id ${post.id} is Updated successfully`)
+    this._snackbar.openSnackBar(`Post with id ${post.id} is Updated Successfully.`)
   }
 
 }

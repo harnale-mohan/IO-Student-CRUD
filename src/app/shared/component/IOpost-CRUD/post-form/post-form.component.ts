@@ -8,13 +8,12 @@ import { UuidService } from 'src/app/shared/services/uuid.service';
   templateUrl: './post-form.component.html',
   styleUrls: ['./post-form.component.scss']
 })
-export class PostFormComponent implements OnInit, OnChanges {
+export class PostFormComponent implements OnInit, OnChanges{
   @ViewChild('postForm') postForm !: NgForm
   @Output() emitAddPost : EventEmitter<Ipost> = new EventEmitter<Ipost>()
-  @Output() emitUpdatedPost : EventEmitter<Ipost> = new EventEmitter<Ipost>()
+  @Output() emitUpdatePost : EventEmitter<Ipost> = new EventEmitter<Ipost>()
   @Input() editPost !: Ipost
-  isInEditMode : boolean = false
-  
+  IsInEditMode : boolean = false
 
   constructor(
     private _uuid : UuidService
@@ -25,21 +24,22 @@ export class PostFormComponent implements OnInit, OnChanges {
 
   ngOnChanges(changes: SimpleChanges): void {
     if(changes['editPost']['currentValue']){
-      this.isInEditMode = true;
+      this.IsInEditMode = true
       this.postForm.form.patchValue(changes['editPost']['currentValue'])
     }
   }
 
   onAdd(){
-    let newPost : Ipost = {...this.postForm.value, id : this._uuid.getUniqueNumber()}
-    this.emitAddPost.emit(newPost)
+    let postObj : Ipost = {...this.postForm.value, id: this._uuid.getUniqueNumber()}
+    this.emitAddPost.emit(postObj)
     this.postForm.reset()
   }
 
+
   onUpdate(){
-    let UPDATED_POST = {...this.postForm.value, id: this.editPost.id}
-    this.emitUpdatedPost.emit(UPDATED_POST)
-    this.isInEditMode = false;
+    let UPDATED_post : Ipost = {...this.postForm.value, id : this.editPost.id}
+    this.emitUpdatePost.emit(UPDATED_post)
+    this.IsInEditMode = false;
     this.postForm.reset()
   }
 

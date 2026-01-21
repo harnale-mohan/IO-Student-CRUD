@@ -9,9 +9,9 @@ import { SnackBarService } from 'src/app/shared/services/snack-bar.service';
   styleUrls: ['./todo-dashboard.component.scss']
 })
 export class TodoDashboardComponent implements OnInit {
-  editTodo !: Itodo;
- 
 
+  editTodo !: Itodo
+ 
   constructor(
      private _snackbar : SnackBarService
   ) { }
@@ -19,28 +19,28 @@ export class TodoDashboardComponent implements OnInit {
   ngOnInit(): void {
   }
 
-  
-  
-
   todoArr : Array<Itodo> = todosArray
 
   onAdd(todo : Itodo){
-    this.todoArr.push(todo);
-    this._snackbar.openSnackBar(`New Todo With id${todo.id} is Created Successfully`)
+    this.todoArr.push(todo)
+    this._snackbar.openSnackBar(`New todo With Id ${todo.id} is Created Successfully.`)
   }
 
-  onRemove(todo : number){
-  let getIndex = this.todoArr.findIndex(t => t.id == todo);
-  this.todoArr.splice(getIndex,1)
-    this._snackbar.openSnackBar(`Todo With id ${todo} is Removed Successfully`)
+  onRmeove(id : number){
+    let getIndex = this.todoArr.findIndex(t =>  t.id == id)
+    this.todoArr.splice(getIndex,1)
+    this._snackbar.openSnackBar(`New todo With Id ${id} is Removed Successfully.`)
   }
 
   onEdit(todo : Itodo){
-    this.editTodo = todo;
+    this.editTodo = todo
   }
 
-  onUpdate(todo : Itodo){
-    let getIndex = this.todoArr.findIndex(t => t.id == todo.id);
-    this.todoArr[getIndex] = todo;
+  onUpdate(todo: Itodo){
+    let getIndex = this.todoArr.findIndex(t => t.id == todo.id)
+    this.todoArr[getIndex] = todo
+     this._snackbar.openSnackBar(`todo With Id ${todo.id} is Updated Successfully.`)
+    
   }
+  
 }

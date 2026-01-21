@@ -1,4 +1,5 @@
 import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
+import { Istudent } from 'src/app/shared/models/student';
 import { Itodo } from 'src/app/shared/models/todo';
 
 @Component({
@@ -9,19 +10,21 @@ import { Itodo } from 'src/app/shared/models/todo';
 export class TodoListComponent implements OnInit {
   @Input() todos !: Array<Itodo>
   @Output() emitRemoveTodo : EventEmitter<number> = new EventEmitter<number>()
-  @Output() emitEditTodo : EventEmitter<Itodo> = new EventEmitter<Itodo>()
-
+  @Output() emitEditTOdo : EventEmitter<Itodo> = new EventEmitter<Itodo>()
+   
   constructor() { }
 
   ngOnInit(): void {
   }
 
-  onRemove(id: number){
+  onRemove(id : number){
     this.emitRemoveTodo.emit(id)
+
   }
 
   onEdit(todo : Itodo){
-    this.emitEditTodo.emit(todo)
+    this.emitEditTOdo.emit(todo)
+
   }
 
 }

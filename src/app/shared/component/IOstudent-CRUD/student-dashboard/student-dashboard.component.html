@@ -3,7 +3,7 @@
         <div class="col-md-6">
             <app-student-form
             (emitNewStd)="onAdd($event)"
-            [editStd]="editStd"
+            [editStd]="editStudent"
             (emitUpdatedStd)="onUpdate($event)">
 
             </app-student-form>
@@ -13,8 +13,7 @@
             <app-student-table
             [stdArr]="stdArr"
             (emitRemoveStd)="onRemove($event)"
-            (emitEditStd)="onEdit($event)"
-            >
+            (emitEditStd)="onEdit($event)">
 
             </app-student-table>
         </div>

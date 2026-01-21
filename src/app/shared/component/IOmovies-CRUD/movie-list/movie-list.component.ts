@@ -9,8 +9,9 @@ import { Imovies } from 'src/app/shared/models/movies';
 })
 export class MovieListComponent implements OnInit {
   @Input() movieArr !: Array<Imovies>
-  @Output() emitRemoveMovie  : EventEmitter<number> = new EventEmitter<number>()
-  @Output() emitEditMovie : EventEmitter<Imovies> = new EventEmitter<Imovies>()
+  @Output() emitRemoveMovie : EventEmitter<number> = new EventEmitter<number>()
+  @Output() emitEditMovie :EventEmitter<Imovies>  = new EventEmitter<Imovies>()
+  
 
   constructor(
     private _snackbar : MatSnackBar
@@ -26,5 +27,6 @@ export class MovieListComponent implements OnInit {
   onEdit(movie : Imovies){
     this.emitEditMovie.emit(movie)
   }
+
 
 }

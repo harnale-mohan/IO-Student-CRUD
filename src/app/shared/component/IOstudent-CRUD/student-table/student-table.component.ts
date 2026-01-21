@@ -9,15 +9,15 @@ import { Istudent } from 'src/app/shared/models/student';
 export class StudentTableComponent implements OnInit {
   @Input() stdArr !: Array<Istudent>
   @Output() emitRemoveStd : EventEmitter<number> = new EventEmitter<number>()
-  @Output() emitEditStd : EventEmitter<Istudent>  = new EventEmitter<Istudent>()
+  @Output() emitEditStd : EventEmitter<Istudent> = new EventEmitter<Istudent>()
 
   constructor() { }
 
   ngOnInit(): void {
   }
 
-  onRemove(std : number){
-    this.emitRemoveStd.emit(std)
+  onRemove(id : number){
+    this.emitRemoveStd.emit(id)
   }
 
   onEdit(std : Istudent){

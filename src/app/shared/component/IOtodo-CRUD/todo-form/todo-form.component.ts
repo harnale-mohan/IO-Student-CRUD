@@ -11,13 +11,13 @@ import { UuidService } from 'src/app/shared/services/uuid.service';
   templateUrl: './todo-form.component.html',
   styleUrls: ['./todo-form.component.scss']
 })
-export class TodoFormComponent implements OnInit, OnChanges {
+export class TodoFormComponent implements OnInit, OnChanges{
   @ViewChild('todoForm') todoForm !: NgForm
-  @Output() emitNewTodo : EventEmitter<Itodo> = new EventEmitter<Itodo>()
-  @Output() emitUpdatedTOdo : EventEmitter<Itodo> = new EventEmitter<Itodo>()
+  @Output() emitAddTodo : EventEmitter<Itodo> = new EventEmitter<Itodo>()
   @Input() editTodo !: Itodo
-  isInEditMode : boolean = false;
-
+  @Output() emitUpdatedTodo : EventEmitter<Itodo> = new EventEmitter<Itodo>()
+  isInEditMode : boolean = false
+  
   constructor(
     private _snackbar : SnackBarService,
     private _uuid : UuidService
@@ -32,22 +32,20 @@ export class TodoFormComponent implements OnInit, OnChanges {
       this.todoForm.form.patchValue(changes['editTodo']['currentValue'])
     }
   }
-      
-      
 
-  onSubmit(){
+  onAdd(){
     let addTodo : Itodo = {...this.todoForm.value, id : this._uuid.getUniqueNumber()}
-    this.emitNewTodo.emit(addTodo)
+    this.emitAddTodo.emit(addTodo)
     this.todoForm.reset()
-
   }
 
   onUpdate(){
-    let UPDATED_TODO : Itodo = {...this.todoForm.value, id : this.editTodo.id};
-    this.emitUpdatedTOdo.emit(UPDATED_TODO)
-    this.isInEditMode = false;
-    this.todoForm.reset()
-     this._snackbar.openSnackBar(`Todo With id ${this.editTodo.id} is Updated Successfully`)
+    let UPDATED_TODO = {...this.todoForm.value, id : this.editTodo.id}
+    this.emitUpdatedTodo.emit(UPDATED_TODO)
+     this.isInEditMode = false;
+     this.todoForm.reset()
+
   }
+
 
 }
